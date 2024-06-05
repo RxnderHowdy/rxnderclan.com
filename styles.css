@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?familyMontserrat&display=swap');
+
+@font-face {
+  font-family: 'Azonix';
+  src: url('fonts/Azonix.otf');
+}
+
+body {
+  font-family: 'Azonix', sans-serif;
+}
+
+body {
+  background: url('https://wallpaperaccess.com/full/1157063.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.link-box {
+  position: relative;
+  max-width: 600px;
+  margin: 50px auto 0 auto;
+  height: 800px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  border: 1px solid #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-box h2 {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Azonix', sans-serif;
+  color: #fff;
+  text-rendering: optimizeLegibility;
+}
+
+.link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.link-list li {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.link-list a {
+  display: block;
+  text-decoration: none;
+}
+
+.link-list button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e31c26;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Azonix', sans-serif;
+  margin-right: 20px;
+}
+
+.link-list button:hover {
+  background-color: #555;
+}
+
+button a {
+  text-decoration: none;
+}
+
+.roster-button:hover {
+  background-color: #555;
+}
+
+.roster-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 50px auto 0 auto;
+}
+
+.roster-box {
+  width: 300px;
+  margin: 0 20px;
+  max-width: 600px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  border: 1px solid #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.roster-box img {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.roster-text {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.roster-text a {
+  color: red;
+}
+
+.roster-text h3 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Azonix', sans-serif;
+  color: #ff0000;
+  text-rendering: optimizeLegibility;
+}
+
+.roster-text p {
+  font-family: 'Azonix', sans-serif;
+}
+
+.roster-row {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+
+a:link {
+  color: #e31c26;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.header-logo {
+  height: 30px;
+  margin-right: 1em;
+}
+
+.header-title {
+  font-family: 'Azonix', sans-serif;
+  font-size: 28px;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header-title a:hover {
+  color: #e31c26;
+}
+
+.header-nav ul {
+  list-style: none;
+  margin: 0;
+  margin-right: 1em;
+  padding: 0;
+  display: flex;
+}
+
+.header-nav li {
+  margin: 0 10px;
+  margin-left: 1em;
+}
+
+.header-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Azonix', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 2px solid #e31c26;
+}
+
+
+.header-nav a:hover {
+  background-color: #555;
+}
+
+.tryout-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.tryout-heading {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: 'Azonix', sans-serif;
+}
+
+body {
+  height: 100%;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #e31c26;
+  border-radius: 1em;
+}
+
+.tryout-container iframe::-webkit-scrollbar {
+  width: 0.5em !important;
+}
+
+.tryout-container iframe::-webkit-scrollbar-track {
+  background-color: #333 !important;
+}
+
+.tryout-container iframe::-webkit-scrollbar-thumb {
+  background-color: #e31c26 !important;
+  border-radius: 1em !important;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.header-logo {
+  height: 50px;
+  margin-right: 30px;
+}
+
+.header-title {
+  font-family: 'Azonix', sans-serif;
+  font-size: 28px;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header-nav ul {
+  list-style: none;
+  margin: 0;
+  margin-right: 1em;
+  padding: 0;
+  display: flex;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 50px;
+}
+
+
+iframe {
+  margin-top: 50px;
+  border: none;
+}
+
+.signin-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.signin-form {
+  margin-top: 20px;
+}
+
+.signin-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.signin-button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.google-signin {
+  margin-top: 20px;
+}
