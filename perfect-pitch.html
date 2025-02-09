@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>howdy | perfect pitch trainer</title>
+    <link rel="icon" href="howdy.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            background-color: #000; /* Black background */
+            color: #f0f0f0; /* Light grey text */
+        }
+
+        header {
+            font-size: 5rem;
+            position: fixed;
+            margin-bottom: 40rem;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #f0f0f0; /* Light grey heading */
+            position: fixed;
+            margin-bottom: 29rem;
+        }
+    
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #444; /* Darker grey button */
+            color: #f0f0f0; /* Light grey text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+    
+        button:hover {
+            background-color: #555; /* Slightly lighter grey on hover */
+        }
+    
+        .piano {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    
+        .key {
+            width: 40px;
+            height: 120px;
+            border: 1px solid #333; /* Darker border */
+            border-radius: 5%;
+            background-color: #fff; /* White keys */
+            color: #000; /* Black text on the keys */
+            text-align: center;
+            line-height: 120px;
+            cursor: pointer;
+            margin: 2px;
+            transition: background-color 0.2s; /* Smooth transition for color change */
+        }
+    
+        .key.correct {
+            background-color: #4CAF50; /* Green for correct */
+        }
+    
+        .key.incorrect {
+            background-color: #F44336; /* Red for incorrect */
+        }
+    
+        .key:hover {
+            background-color: #ddd; /* Light grey on hover */
+        }
+
+        .scoreboard {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .scoreboard span {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .timer {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333; /* Dark grey text */
+        }
+
+        footer {
+  text-align: center;
+  color: #777; /* Dark grey color */
+  font-size: 0.8rem; /* Makes it small */
+  padding: 0rem 0;
+  margin-top: 50rem; /* Pushes the footer to the bottom */
+  background-color: #000; /* Matches your page background */
+  position: fixed;
+}
+
+footer a {
+  color: #fff; /* White links */
+  text-decoration: none; /* Removes underline */
+  margin: 0 0.5rem; /* Adds spacing between links */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Underline on hover for clarity */
+}
+
+footer p {
+  margin: 0.5rem 0 0 0; /* Adds spacing above the copyright text */
+  font-size: 0.7rem; /* Makes it even smaller */
+}
+
+.socials {
+      margin-top: 0rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      top: 0px; /* Moves it up without affecting other elements */
+    }
+
+    .socials a {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #1db954; /* Spotify green for a vibrant hover effect */
+    }
+    </style>    
+</head>
+<body>
+    <header><i class="fa-solid fa-music"></i></header>
+    <h1>Perfect Pitch Trainer</h1>
+    <button onclick="repeatNote()"><i class="fa-solid fa-repeat"></i></button>
+    <div class="piano" id="piano"></div>
+    <div class="scoreboard">
+        Correct: <span id="correctCount">0</span><br>
+        Incorrect: <span id="incorrectCount">0</span><br>
+        Total Guessed: <span id="totalCount">0</span>
+    </div>
+    <div class="timer">Time Elapsed: <span id="elapsedTime">0</span> seconds</div>
+
+    <script>
+        const notes = ["C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4", "C5"];
+        let currentNote = "";
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let totalCount = 0;
+        let startTime = Date.now();
+
+        const synth = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(frequency) {
+            const oscillator = synth.createOscillator();
+            oscillator.type = "sine";
+            oscillator.frequency.setValueAtTime(frequency, synth.currentTime);
+            oscillator.connect(synth.destination);
+            oscillator.start();
+            setTimeout(() => oscillator.stop(), 1000);
+        }
+
+        function getFrequency(note) {
+            const A4 = 440;
+            const semitoneRatio = Math.pow(2, 1/12);
+            const noteIndex = notes.indexOf(note);
+            return A4 * Math.pow(semitoneRatio, noteIndex - 9);
+        }
+
+        function playRandomNote() {
+            currentNote = notes[Math.floor(Math.random() * notes.length)];
+            playSound(getFrequency(currentNote));
+            document.querySelectorAll('.key').forEach(key => key.classList.remove('correct', 'incorrect'));
+        }
+
+        function handleNoteClick(note, element) {
+            totalCount++;
+            if (note === currentNote) {
+                correctCount++;
+                element.classList.add('correct');
+            } else {
+                incorrectCount++;
+                element.classList.add('incorrect');
+                document.querySelector(`.key[data-note='${currentNote}']`).classList.add('correct');
+            }
+            updateScoreboard();
+            setTimeout(playRandomNote, 1000);
+        }
+
+        function repeatNote() {
+            playSound(getFrequency(currentNote));
+        }
+
+        function updateScoreboard() {
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('incorrectCount').textContent = incorrectCount;
+            document.getElementById('totalCount').textContent = totalCount;
+        }
+
+        function updateTimer() {
+    const elapsedTimeInSeconds = Math.floor((Date.now() - startTime) / 1000);
+    const hours = Math.floor((elapsedTimeInSeconds % (24 * 3600)) / 3600);
+    const minutes = Math.floor((elapsedTimeInSeconds % 3600) / 60);
+    const seconds = elapsedTimeInSeconds % 60;
+
+    const formattedTime = 
+        `${hours}h ${minutes}m ${seconds}s`;
+
+    document.getElementById('elapsedTime').textContent = formattedTime;
+}
+
+
+        setInterval(updateTimer, 1000);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const piano = document.getElementById("piano");
+            notes.forEach(note => {
+                const key = document.createElement("div");
+                key.className = "key";
+                if (note.includes("#")) {
+                    key.classList.add("black");
+                }
+                key.innerText = note;
+                key.dataset.note = note;
+                key.onclick = () => handleNoteClick(note, key);
+                piano.appendChild(key);
+            });
+            playRandomNote();
+        });
+    </script>
+    <footer>
+        <div class="socials">
+            <a href="https://www.twitch.tv/howdyfv" target="_blank"><i class="fa-brands fa-twitch"></i></a>
+            <a href="https://www.tiktok.com/@howdyfn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@RxnderHowdy" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://x.com/howdy727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <nav>
+            <a href="about.html">About</a> | 
+            <a href="socials.html">Socials</a> | 
+            <a href="mailto:support@rxnderclan.com">Contact</a>
+        </nav>
+        <p><a href="index.html">© rxnderclan.com</a></p>
+      </div>
+      </footer>
+</body>
+</html>

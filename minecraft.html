@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Howdy's SMP</title>
+    <link rel="icon" href="howdy.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background:
+            linear-gradient(
+              rgba(0, 0, 0, 0.2), 
+              rgba(0, 0, 0, 0.2)
+            ),
+            url(https://wallpaperaccess.com/full/6104276.jpg);
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .status-box {
+            display: flex;
+            align-items: center;
+            background-color: #2b2e31;
+            color: white;
+            border-radius: 15px;
+            padding: 20px 40px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            gap: 20px;
+            margin-top: 3rem;
+            font-size: 1.2rem;
+        }
+        .icon {
+            width: 40px;
+            height: 40px;
+            background-color: #d17b28;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .text-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .server-name {
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .server-name:hover {
+            text-decoration: underline;
+        }
+        .welcome {
+            font-size: 16px;
+            color: #f2a900;
+        }
+        .mode {
+            font-size: 14px;
+            color: #00c8ff;
+        }
+        .status {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        .signal {
+            width: 10px;
+            height: 10px;
+            background-color: #00ff00;
+            border-radius: 50%;
+        }
+
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: auto;
+        }
+
+        .mySlides {
+          display: none;
+        }
+
+        .prev, .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          width: auto;
+          margin-top: -22px;
+          padding: 16px;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+          transition: 0.6s ease;
+          border-radius: 3px;
+          user-select: none;
+        }
+
+        .prev {
+          left: 0;
+          border-radius: 3px 0 0 3px;
+        }
+
+        .next {
+          right: 0;
+          border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+          background-color: rgba(0,0,0,0.8);
+        }
+
+        .text {
+          color: #f2f2f2;
+          font-size: 15px;
+          padding: 8px 12px;
+          position: absolute;
+          bottom: 8px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .numbertext {
+          color: #f2f2f2;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          top: 0;
+        }
+
+        .dot {
+          cursor: pointer;
+          height: 15px;
+          width: 15px;
+          margin: 0 2px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+          background-color: #717171;
+        }
+
+        .fade {
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+          from {opacity: .4}
+          to {opacity: 1}
+        }
+
+        .textbox {
+            font-size: 0.75rem;
+            margin-top: 2rem;
+            background-color: #000;
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            padding: 8px;
+            width: 60%;
+            max-width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .textbox h1 {
+          cursor: pointer;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 2s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
+}
+        
+footer {
+  text-align: center;
+  color: #777; /* Dark grey color */
+  font-size: 0.8rem; /* Makes it small */
+  padding: 0rem 0;
+}
+
+footer a {
+  color: #fff; /* White links */
+  text-decoration: none; /* Removes underline */
+  margin: 0 0.5rem; /* Adds spacing between links */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Underline on hover for clarity */
+}
+
+footer p {
+  margin: 0.5rem 0 0 0; /* Adds spacing above the copyright text */
+  font-size: 0.7rem; /* Makes it even smaller */
+}
+
+.socials {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding-bottom: 0.2rem;
+      top: 0px; /* Moves it up without affecting other elements */
+    }
+
+    .socials a {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #1db954; /* Spotify green for a vibrant hover effect */
+    }
+
+    </style>
+</head>
+<body>
+    <div class="status-box">
+        <div class="icon"><img src="howdy.png" style="max-height: 50px; max-width: 50px;"></div>
+        <div class="text-section">
+            <span class="server-name" onclick="copyToClipboard('mc.rxnderclan.com')">mc.rxnderclan.com</span>
+            <span class="welcome">welcome to howdy's smp</span>
+            <span class="mode">SURVIVAL</span>
+        </div>
+        <div class="status">
+            <span>0/69420</span>
+            <div class="signal"></div>
+        </div>
+    </div>
+
+    <div class="textbox" onclick="copyToClipboard('mc.rxnderclan.com')"><h1>mc.rxnderclan.com</h1></div>
+
+    <div class="slideshow-container">
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <img src="base.png" style="width:100%">
+      <div class="text">smp central hub</div>
+    </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 4</div>
+          <img src="howdy-base.png" style="width:100%">
+          <div class="text">howdy's base</div>
+        </div>
+      
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 4</div>
+          <img src="cmatt-base.png" style="width:100%">
+          <div class="text">CMATT's base</div>
+        </div>
+      
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 4</div>
+          <img src="catacombs.png" style="width:100%">
+          <div class="text">riot and dominick excavating catacombs underneath howdy's base</div>
+        </div>
+      
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+      
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+      </div>
+      
+      <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard: ' + text);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+      </script>
+      <footer>
+        <div class="socials">
+          <a href="https://www.twitch.tv/howdyfv" target="_blank"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://www.tiktok.com/@howdyfn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@RxnderHowdy" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://x.com/howdy727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        </div class="navbar">
+        <div>
+        <nav>
+          <a href="about.html">About</a> | 
+          <a href="socials.html">Socials</a> | 
+          <a href="mailto:support@rxnderclan.com">Contact</a>
+        </nav>
+        <p><a href="index.html">© rxnderclan.com</a></p>
+      </div>
+      </footer>
+</body>
+</html>

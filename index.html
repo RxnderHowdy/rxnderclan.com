@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>howdy | home</title>
+  <link rel="icon" href="howdy.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 50px;
+  margin: 0rem 0; /* Adjust this value */
+  color: #555;
+  padding-top: 2rem;
+    }
+
+    h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 4rem; /* Adjust this value */
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .box {
+  background-color: #1A1A1A;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: left; /* Aligns text to the left */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.box h3 {
+  margin: 0 0 0.5rem 0; /* Adds some spacing below the heading */
+}
+
+.box p {
+  color: #777; /* Dark grey color for the paragraph */
+  margin: 0; /* Remove default margin for cleaner spacing */
+}
+
+
+    .box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1 a:hover {
+        color: white;
+    }
+
+    footer {
+  text-align: center;
+  color: #777; /* Dark grey color */
+  font-size: 0.8rem; /* Makes it small */
+  padding: 0rem 0;
+  margin-top: 51.3rem; /* Pushes the footer to the bottom */
+  background-color: #000; /* Matches your page background */
+  position: fixed;
+}
+
+footer a {
+  color: #fff; /* White links */
+  text-decoration: none; /* Removes underline */
+  margin: 0 0.5rem; /* Adds spacing between links */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Underline on hover for clarity */
+}
+
+footer p {
+  margin: 0.5rem 0 0 0; /* Adds spacing above the copyright text */
+  font-size: 0.7rem; /* Makes it even smaller */
+}
+
+.socials {
+      margin-top: 0rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      top: 0px; /* Moves it up without affecting other elements */
+    }
+
+    .socials a {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #1db954; /* Spotify green for a vibrant hover effect */
+    }
+
+  </style>
+</head>
+<body>
+  <h1><a href="index.html">howdy</a></h1>
+  <h2>welcome.</h2>
+  <div class="grid">
+    <a href="perfect-pitch.html" class="box">
+      <div class="icon"><i class="fa-solid fa-music"></i></div>
+      <h3>Perfect pitch</h3>
+      <p>Improve your auditory phenomenon</p>
+    </a>
+    <a href="#" class="box">
+      <div class="icon"><i class="fa-solid fa-lock"></i></div>
+      <h3>Coming soon</h3>
+      <p>Check back later for updates</p>
+    </a>
+    <a href="howdybot.html" class="box">
+      <div class="icon"><i class="fa-brands fa-discord"></i></div>
+      <h3>howdy bot</h3>
+      <p>Check out howdy's Discord bot and add it to your server</p>
+    </a>
+    <a href="minecraft.html" class="box">
+      <div class="icon"><i class="fa-solid fa-server"></i></div>
+      <h3>howdy's smp</h3>
+      <p>Join howdy's Minecraft SMP</p>
+    </a>
+  </div>
+  <footer>
+    <div class="socials">
+      <a href="https://www.twitch.tv/howdyfv" target="_blank"><i class="fa-brands fa-twitch"></i></a>
+            <a href="https://www.tiktok.com/@howdyfn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@RxnderHowdy" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://x.com/howdy727" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    </div class="navbar">
+    <div>
+    <nav>
+      <a href="about.html">About</a> | 
+      <a href="socials.html">Socials</a> | 
+      <a href="mailto:support@rxnderclan.com">Contact</a>
+    </nav>
+    <p><a href="index.html">© rxnderclan.com</a></p>
+  </div>
+  </footer>
+</body>
+</html>
